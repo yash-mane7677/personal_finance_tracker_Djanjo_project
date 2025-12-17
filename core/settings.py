@@ -27,9 +27,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
-CSRF_TRUSTED_ORIGINS = [
-    "https://*.up.railway.app",
-]
+
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
@@ -145,3 +143,13 @@ EMAIL_HOST_PASSWORD = 'ithf plaz emuo sgpg'
 
 # This is what people see in their 'From' field
 DEFAULT_FROM_EMAIL = 'PFST Security <your-email@gmail.com>'
+
+
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://*.up.railway.app",
+]
+
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
