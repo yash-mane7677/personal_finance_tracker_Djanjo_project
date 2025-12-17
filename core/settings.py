@@ -13,10 +13,19 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 # --------------------------------------
 import os
 
+# Disable real email on Railway (SMTP blocked)
 if os.getenv("RAILWAY_ENVIRONMENT"):
     EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 else:
     EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+    EMAIL_HOST = "smtp.gmail.com"
+    EMAIL_PORT = 587
+    EMAIL_USE_TLS = True
+    EMAIL_HOST_USER = "maneyash06@gmail.com"
+    EMAIL_HOST_PASSWORD = "YOUR_LOCAL_APP_PASSWORD"
+
+DEFAULT_FROM_EMAIL = "PFST Security <maneyash06@gmail.com>"
+
 
 # -------------------------------------
 from pathlib import Path
@@ -140,15 +149,15 @@ LOGOUT_REDIRECT_URL = 'home'
 
 # Switch from Console to SMTP (Real Email)
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
 
 # IMPORTANT: Use your actual Gmail address
-EMAIL_HOST_USER = 'maneyash06@gmail.com' 
+# EMAIL_HOST_USER = 'maneyash06@gmail.com' 
 
 # IMPORTANT: Use the 16-character 'App Password', NOT your login password
-EMAIL_HOST_PASSWORD = 'ithf plaz emuo sgpg' 
+# EMAIL_HOST_PASSWORD = 'ithf plaz emuo sgpg' 
 
 # This is what people see in their 'From' field
 DEFAULT_FROM_EMAIL = 'PFST Security <maneyash06@gmail.com>'
