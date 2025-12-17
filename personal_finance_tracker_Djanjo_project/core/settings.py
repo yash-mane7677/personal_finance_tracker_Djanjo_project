@@ -11,25 +11,12 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 # --------------------------------------
 # Disable real email on Railway (SMTP blocked)
-# settings.py
+import os
 
-# Keep DEBUG = True for local testing
-DEBUG = True 
+# Railway blocks SMTP – always use console email there
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
-if DEBUG:
-    # Use SMTP for real emails on http://127.0.0.1:8000/
-    EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-    EMAIL_HOST = "smtp.gmail.com"
-    EMAIL_PORT = 587
-    EMAIL_USE_TLS = True
-    EMAIL_HOST_USER = "maneyash06@gmail.com"
-    # Ensure there are NO SPACES in this 16-character password
-    EMAIL_HOST_PASSWORD = "ithfplazemuosgpg" 
-    DEFAULT_FROM_EMAIL = "PFST Security <maneyash06@gmail.com>"
-else:
-    # Use console for Railway to prevent 500 errors
-    EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
-
+DEFAULT_FROM_EMAIL = "PFST Security <noreply@pfst.local>"
 
 
 
@@ -175,8 +162,8 @@ CSRF_TRUSTED_ORIGINS = [
     "https://*.up.railway.app",
 ]
 
-CSRF_COOKIE_SECURE = False
-SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
 
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/accounts/login/'
