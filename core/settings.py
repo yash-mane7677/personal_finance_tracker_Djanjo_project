@@ -9,10 +9,7 @@ https://docs.djangoproject.com/en/6.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
-# import os
 # --------------------------------------
-import os
-
 # Disable real email on Railway (SMTP blocked)
 import os
 
@@ -37,7 +34,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-8#5f0@&#922@!6m-q(e*hx!7+3swd%e%^xxk+&yr5s^-679*^t'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -144,7 +141,7 @@ LOGOUT_REDIRECT_URL = 'home'
 # core/settings.py
 
 # Switch from Console to SMTP (Real Email)
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # EMAIL_HOST = 'smtp.gmail.com'
 # EMAIL_PORT = 587
 # EMAIL_USE_TLS = True
@@ -156,7 +153,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # EMAIL_HOST_PASSWORD = 'ithf plaz emuo sgpg' 
 
 # This is what people see in their 'From' field
-DEFAULT_FROM_EMAIL = 'PFST Security <maneyash06@gmail.com>'
+# DEFAULT_FROM_EMAIL = 'PFST Security <maneyash06@gmail.com>'
 
 
 # EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
