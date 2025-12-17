@@ -24,7 +24,6 @@ def home(request):
 
 # READ: Display subscriptions on Dashboard
 @login_required
-@login_required
 def dashboard(request):
     # This fetches all subscriptions that belong to the logged-in user
     user_subs = Subscription.objects.filter(user=request.user)
