@@ -9,8 +9,16 @@ https://docs.djangoproject.com/en/6.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
+# import os
+# --------------------------------------
 import os
 
+if os.getenv("RAILWAY_ENVIRONMENT"):
+    EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+else:
+    EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+
+# -------------------------------------
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
