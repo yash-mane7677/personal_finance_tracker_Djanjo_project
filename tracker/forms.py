@@ -10,4 +10,5 @@ class SubscriptionForm(forms.ModelForm):
             'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'e.g. Netflix'}),
             'category': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'e.g. Entertainment'}),
             'amount': forms.NumberInput(attrs={'class': 'form-control'}),
+            
         }

@@ -11,16 +11,14 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 # --------------------------------------
 # Disable real email on Railway (SMTP blocked)
-import os
+# import os
 
-# Railway blocks SMTP – always use console email there
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+# # Railway blocks SMTP – always use console email there
+# EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
-DEFAULT_FROM_EMAIL = "PFST Security <noreply@pfst.local>"
+# DEFAULT_FROM_EMAIL = "PFST Security <noreply@pfst.local>"
 
-
-
-# -------------------------------------
+# # -------------------------------------
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -134,29 +132,33 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 # settings.py
-LOGIN_REDIRECT_URL = 'dashboard'
+LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = '/accounts/login/'
 LOGOUT_REDIRECT_URL = 'home'
 
-# This prints the login email to your terminal
-# core/settings.py
-
-# Switch from Console to SMTP (Real Email)
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_PORT = 587
-# EMAIL_USE_TLS = True
-
-# IMPORTANT: Use your actual Gmail address
-# EMAIL_HOST_USER = 'maneyash06@gmail.com' 
-
-# IMPORTANT: Use the 16-character 'App Password', NOT your login password
-# EMAIL_HOST_PASSWORD = 'ithf plaz emuo sgpg' 
-
-# This is what people see in their 'From' field
-# DEFAULT_FROM_EMAIL = 'PFST Security <maneyash06@gmail.com>'
 
 
-# EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+# ===============================
+# EMAIL CONFIG (LOCAL ONLY)
+# ===============================
+
+if DEBUG:
+    # Localhost → real email
+    EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+    EMAIL_HOST = "smtp.gmail.com"
+    EMAIL_PORT = 587
+    EMAIL_USE_TLS = True
+
+    EMAIL_HOST_USER = "maneyash06@gmail.com"
+    EMAIL_HOST_PASSWORD = "ithfplazemuosgpg"
+
+    DEFAULT_FROM_EMAIL = "PFST Security <maneyash06@gmail.com>"
+
+else:
+    # Production (Railway) → no real email
+    EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+    DEFAULT_FROM_EMAIL = "PFST Security <noreply@pfst.local>"
+
 
 CSRF_TRUSTED_ORIGINS = [
     "https://*.up.railway.app",
@@ -167,4 +169,4 @@ SESSION_COOKIE_SECURE = True
 
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/accounts/login/'
-    
+LOGOUT_REDIRECT_URL = 'home'
