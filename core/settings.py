@@ -14,17 +14,13 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 import os
 
 # Disable real email on Railway (SMTP blocked)
-if os.getenv("RAILWAY_ENVIRONMENT"):
-    EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
-else:
-    EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-    EMAIL_HOST = "smtp.gmail.com"
-    EMAIL_PORT = 587
-    EMAIL_USE_TLS = True
-    EMAIL_HOST_USER = "maneyash06@gmail.com"
-    EMAIL_HOST_PASSWORD = "YOUR_LOCAL_APP_PASSWORD"
+import os
 
-DEFAULT_FROM_EMAIL = "PFST Security <maneyash06@gmail.com>"
+# Railway blocks SMTP – always use console email there
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+DEFAULT_FROM_EMAIL = "PFST Security <noreply@pfst.local>"
+
 
 
 # -------------------------------------
