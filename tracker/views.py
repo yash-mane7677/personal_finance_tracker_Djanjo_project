@@ -40,7 +40,7 @@ def add_subscription(request):
             sub.user = request.user
             sub.save()
             
-#---------------------------------- Send the email notification
+#-- Send the email notification
             send_mail(
                 'New Subscription Added',
                 f'You have added {sub.name} to your tracker for ₹{sub.amount}.',
@@ -119,7 +119,7 @@ def dashboard(request):
     user_subscriptions = Subscription.objects.filter(user=request.user)
     total_spend = user_subscriptions.aggregate(Sum('amount'))['amount__sum'] or 0
 
-    # 📊 Get total amount spent per category for the chart
+    # Get total amount spent per category for the chart
     category_data = user_subscriptions.values('category').annotate(total=Sum('amount'))
     
     # Extract labels and data points for Chart.js
