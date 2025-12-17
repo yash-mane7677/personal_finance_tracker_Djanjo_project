@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/6.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
+import os
 
 from pathlib import Path
 
@@ -142,10 +143,10 @@ EMAIL_HOST_USER = 'maneyash06@gmail.com'
 EMAIL_HOST_PASSWORD = 'ithf plaz emuo sgpg' 
 
 # This is what people see in their 'From' field
-DEFAULT_FROM_EMAIL = 'PFST Security <your-email@gmail.com>'
+DEFAULT_FROM_EMAIL = 'PFST Security <maneyash06@gmail.com>'
 
 
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+# EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 CSRF_TRUSTED_ORIGINS = [
     "https://*.up.railway.app",
