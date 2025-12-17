@@ -169,4 +169,4 @@ SESSION_COOKIE_SECURE = True
 
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/accounts/login/'
-LOGOUT_REDIRECT_URL = 'home'
+    
